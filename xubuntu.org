@@ -1,0 +1,46 @@
+#+TITLE: biobuntu: install and upgrade xubuntu
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+
+* First time installation
+    
+To install a fresh ubuntu system on your computer:
+
+- download iso e.g., here: http://xubuntu.org/getxubuntu/
+- install =usb-creator-gtk= 
+
+#+BEGIN_SRC sh
+sudo apt-get install install usb-creator-gtk --assume-yes 
+#+END_SRC   
+
+- use =usb-creator-gtk=
+
+#+BEGIN_SRC sh
+usb-creator-gtk&
+#+END_SRC   
+
+Reference: https://help.ubuntu.com/community/Installation/FromUSBStick
+
+* Upgrade
+
+- Back up:
+
+Make sure that all files in your computer have a backup somewhere
+outside your computer.
+
+- Clean up:
+
+#+BEGIN_SRC sh
+sudo apt-get --purge autoremove
+sudo apt-get autoclean
+sudo apt-get purge $(dpkg -l | awk '/^rc/ { print $2 }')
+#+END_SRC
+
+- Upgrade
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes update-manager-core
+sudo do-release-upgrade
+#+END_SRC

@@ -1,0 +1,20 @@
+#+TITLE: Welcome to the biobuntu realm
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+* Greetings
+
+This is for the biostatisticians at KU with an outside ubuntu
+computer. Shout out loud (we need to hear you in building CSS-15) if
+you find a typo, a crypticum or missing data.
+
+| What               | Where              | Note                              |
+|--------------------+--------------------+-----------------------------------|
+| System (xubuntu)   | [[./xubuntu.org]]  | Install and upgrade xubuntu       |
+| Software           | [[./software.org]] | Install typical biostats Software |
+| Connections        | [[./connect.org]]  | eduroam, vpn, doob, borel, ...,   |
+| Backup             | [[./backup.org]]   | Via unison                        |
+| Danmark Statistics | [[./dst.org]]      | Work with registry data           |
+
+

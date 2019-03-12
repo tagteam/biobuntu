@@ -1,0 +1,92 @@
+#+TITLE: biobuntu software
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+* Clicki-clicki software install interface
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes synaptic
+#+END_SRC
+
+Launch it like this:
+
+#+BEGIN_SRC sh
+sudo synaptic
+#+END_SRC
+
+* Wireless
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes wicd wicd-gtk
+#+END_SRC
+
+* LaTeX and close friends
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes texlive texlive-science texlive-base texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra biber texi2html texinfo 
+sudo apt-get install --assume-yes perl latexmk gv html2text geeqie html2text bibtex2html 
+#+END_SRC
+
+* R and close friends
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes r-base-core r-base-dev
+sudo apt-get install --assume-yes graphviz markdown ecryptfs-utils valgrind xml2 unicode
+sudo apt-get install --assume-yes python-pip python-rarfile python-virtualenv 
+sudo apt-get install --assume-yes gnutls-bin curl libcurl4-openssl-dev libssl-dev
+#+END_SRC
+
+* Git 
+
+#+BEGIN_SRC sh
+sudo apt-get install git git-svn subversion pandoc pandoc-citeproc 
+#+END_SRC
+
+* pdf tools
+
+#+BEGIN_SRC sh
+# split pdf into many
+sudo apt install assume-yes pdftk psutils
+# convert from ppt to pdf
+sudo apt-get install --assume-yes unoconv djvulibre-plugin unrtf
+# convert from word to pdf
+sudo apt-get install wv tetex-extra ghostscript --assume-yes
+# wvPDF test.doc test.pdf
+#+END_SRC
+
+** pdf editor 
+
+masterpdf: https://code-industry.net/masterpdfeditor/
+
+
+* Window manager 
+
+#+BEGIN_SRC sh
+# window manager: xfce
+sudo apt-get install --assume-yes xfce4 xfce4-goodies 
+# move to next monitor
+sudo apt-get install --assume-yes xdotool wmctrl
+#+END_SRC
+
+* Search engines
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes silversearcher-ag recoll notmuch libxapian-dev libgmime-2.6-dev libtalloc-dev zlib1g-dev
+#+END_SRC
+
+* Chrome
+
+#+BEGIN_SRC sh
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo apt-get update 
+sudo apt-get install google-chrome-stable
+#+END_SRC
+
+* Printing
+
+#+BEGIN_SRC sh
+sudo apt-get install cups-pdf --assume-yes
+#+END_SRC
+

@@ -1,0 +1,115 @@
+#+TITLE: biobuntu backup
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+* Backup all or some files
+
+** Philosophy
+
+It is important that you backup your work. It may not be necessary to
+backup all files in your home directory as this would include
+auto-generated ubuntu system related files. A good approach is to save
+work in folders and then add some selected files which are naturally
+living in your home directory and do need backup (e.g., ~/.bashrc).
+
+The backup philosophy here is /better save than sorry/. Hence, we use
+the platform independent graphical interface =unison= to synchronize
+our files. This allows us to check the *direction* of the proposed
+changes before they are applied. For example, if the clock of the
+server is not set correctly we could otherwise risk to overwrite our
+precious work with an older version.
+
+** Install unison on ubuntu 
+
+#+BEGIN_SRC sh
+sudo apt-get install --assume-yes liblablgtk-extras-ocaml-dev
+sudo apt-get install --assume-yes unison unison-gtk unison-all unison-all-gtk
+#+END_SRC
+
+** Check Unison version on the server
+
+The unison versions of the ubuntu machine needs to match the one on
+the server:
+
+#+BEGIN_SRC sh
+/usr/local/bin/unison -version
+#+END_SRC
+
+*** borel, gauss
+
+Should be fine. 
+
+*** doob, rasch
+
+Unfortunately, the current version of unison on our redhat servers
+(doob, rasch) is too low. Fortunately, there is a way ...
+
+1) Create private bin (unless it exists)
+
+#+BEGIN_SRC sh
+ssh -X bio737@doob
+mkdir ~/bin
+#+END_SRC
+
+2) [@2] set PATH so it includes user's private bin if it exists
+
+#+BEGIN_SRC sh
+# we are on the server side (e.g., doob) here
+ if [ -d ~/bin ]; then
+   PATH=~/bin:"${PATH}"
+ fi
+#+END_SRC
+
+3) [@3] copy binary 
+
+#+BEGIN_SRC sh
+# we are still on the server side (e.g., doob) here
+cp /home/ifsv/grb615/bin/unison ~/bin/unison
+chmod 751 ~/bin/unison # make it executable
+which unison # check if this now shows ~/bin/unison and NOT /usr/local/bin/unison
+#+END_SRC
+
+** Setup unison profile
+
+The profiles are saved in the folder =~/.unison/= with extension
+=.prf=.  The profiles are server specific but you can have an almost
+identical copy for the servers, e.g., the two files
+=~/.unison/doob.prf= and =~/.unison/gauss.prf= differ only by one
+line. See the example below and the manual for syntax of this file:
+
+http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html
+
+Example: contents of file =~/.unison/doob.prf=. Change =ubuntu-user= with your ubuntu user name and =bio737= with your
+KU-id:
+
+#+BEGIN_EXAMPLE
+# Roots of the synchronization
+root = /home/ubuntu-user/
+root = ssh://bio737@doob//home/ifsv/bio737/
+
+# files
+path=.Rprofile
+path=.bashrc
+path=.unison/doob.prf
+path=.gitconfig
+path=.emacs
+
+# folders
+path=Desktop
+path=research
+path=bin
+
+# don't synchronise everything (regexp)
+ignore = Name *.exe
+ignore = Name *.o 
+ignore = Name *~
+#+END_EXAMPLE
+
+** Run unison
+
+#+BEGIN_SRC sh
+unison-gtk -addnoversionno doob.prf
+#+END_SRC
+
+Then check if all directions are plausible, resolve =?= (if any), and press =GO=. 

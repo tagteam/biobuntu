@@ -1,0 +1,49 @@
+#+TITLE: biobuntu dst
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+* Requirement: freerdp 
+
+https://github.com/FreeRDP/FreeRDP/wiki/Compilation
+
+1. remove freerdp if any 
+
+#+BEGIN_SRC sh
+sudo apt-get remove xfreerdp
+#+END_SRC
+
+2. [@2]  install github version
+
+#+BEGIN_SRC sh
+git clone https://github.com/FreeRDP/FreeRDP.git
+sudo apt-get install --assume-yes build-essential git-core debhelper cdbs dpkg-dev autotools-dev cmake pkg-config xmlto libssl-dev docbook-xsl xsltproc libxkbfile-dev libx11-dev libwayland-dev libxrandr-dev libxi-dev libxrender-dev libxext-dev libxinerama-dev libxfixes-dev libxcursor-dev libxv-dev libxdamage-dev libxtst-dev libcups2-dev libpcsclite-dev libasound2-dev libpulse-dev libjpeg-dev libgsm1-dev libusb-1.0-0-dev libudev-dev libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer0.10-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-base0.10-dev
+sudo apt-get install --assume-yes libavutil-dev libavcodec-dev libcunit1-dev libdirectfb-dev xmlto doxygen libxtst-dev
+
+cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .
+make
+sudo make install
+sudo ldconfig
+#+END_SRC
+
+* Connect to dst
+
+** open firewall
+
+https://remote.dst.dk/
+
+Username: dst-indent (say XYZ)
+Password: 4 numbers 
+Token: use mobil phone (or token-dims)
+
+** Download launcher
+
+Click on the server and save the file: 
+
+=launchb1335b98.rdp= 
+
+** Run xfreerdp
+
+#+BEGIN_SRC sh
+xfreerdp /home/ubuntu-user/dst/launch1f721a82.rdp /size:1900x1050  /u:XYZ6818@dstfse.local /p:secretpassword
+#+END_SRC

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-03-12 Tue 12:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>biobuntu backup</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Thomas Alexander Gerds Thomas A. Gerds" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://publicifsv.sund.ku.dk/~tag/styles/practicals.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<p class="course-menu"><a accesskey="h" href="README.html">Home</a>&nbsp;<a accesskey="p" href="https://github.com/tagteam">github</a></p><div id="content">
+<h1 class="title">biobuntu backup</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge11e6fb">Backup all or some files</a>
+<ul>
+<li><a href="#orgca831f8">Philosophy</a></li>
+<li><a href="#org1586cb0">Install unison on ubuntu</a></li>
+<li><a href="#org8445e4d">Check Unison version on the server</a>
+<ul>
+<li><a href="#org73884c8">borel, gauss</a></li>
+<li><a href="#orgfe33f90">doob, rasch</a></li>
+</ul>
+</li>
+<li><a href="#orgb4182ef">Setup unison profile</a></li>
+<li><a href="#org28976ac">Run unison</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge11e6fb" class="outline-2">
+<h2 id="orge11e6fb">Backup all or some files</h2>
+<div class="outline-text-2" id="text-orge11e6fb">
+</div>
+<div id="outline-container-orgca831f8" class="outline-3">
+<h3 id="orgca831f8">Philosophy</h3>
+<div class="outline-text-3" id="text-orgca831f8">
+<p>
+It is important that you backup your work. It may not be necessary to
+backup all files in your home directory as this would include
+auto-generated ubuntu system related files. A good approach is to save
+work in folders and then add some selected files which are naturally
+living in your home directory and do need backup (e.g., ~/.bashrc).
+</p>
+
+<p>
+The backup philosophy here is <i>better save than sorry</i>. Hence, we use
+the platform independent graphical interface <code>unison</code> to synchronize
+our files. This allows us to check the <b>direction</b> of the proposed
+changes before they are applied. For example, if the clock of the
+server is not set correctly we could otherwise risk to overwrite our
+precious work with an older version.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1586cb0" class="outline-3">
+<h3 id="org1586cb0">Install unison on ubuntu</h3>
+<div class="outline-text-3" id="text-org1586cb0">
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install --assume-yes liblablgtk-extras-ocaml-dev
+sudo apt-get install --assume-yes unison unison-gtk unison-all unison-all-gtk
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8445e4d" class="outline-3">
+<h3 id="org8445e4d">Check Unison version on the server</h3>
+<div class="outline-text-3" id="text-org8445e4d">
+<p>
+The unison versions of the ubuntu machine needs to match the one on
+the server:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">/usr/local/bin/unison -version
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org73884c8" class="outline-4">
+<h4 id="org73884c8">borel, gauss</h4>
+<div class="outline-text-4" id="text-org73884c8">
+<p>
+Should be fine. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe33f90" class="outline-4">
+<h4 id="orgfe33f90">doob, rasch</h4>
+<div class="outline-text-4" id="text-orgfe33f90">
+<p>
+Unfortunately, the current version of unison on our redhat servers
+(doob, rasch) is too low. Fortunately, there is a way &#x2026;
+</p>
+
+<ol class="org-ol">
+<li>Create private bin (unless it exists)</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">ssh -X bio737@doob
+mkdir ~/bin
+</pre>
+</div>
+
+<ol class="org-ol">
+<li value="2">set PATH so it includes user's private bin if it exists</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">we are on the server side (e.g., doob) here</span>
+ <span style="color: #a020f0;">if</span> [ -d ~/bin ]; <span style="color: #a020f0;">then</span>
+   <span style="color: #a0522d;">PATH</span>=~/bin:<span style="color: #8b2252;">"${PATH}"</span>
+ <span style="color: #a020f0;">fi</span>
+</pre>
+</div>
+
+<ol class="org-ol">
+<li value="3">copy binary</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">we are still on the server side (e.g., doob) here</span>
+cp /home/ifsv/grb615/bin/unison ~/bin/unison
+chmod 751 ~/bin/unison <span style="color: #b22222;"># </span><span style="color: #b22222;">make it executable</span>
+which unison <span style="color: #b22222;"># </span><span style="color: #b22222;">check if this now shows ~/bin/unison and NOT /usr/local/bin/unison</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4182ef" class="outline-3">
+<h3 id="orgb4182ef">Setup unison profile</h3>
+<div class="outline-text-3" id="text-orgb4182ef">
+<p>
+The profiles are saved in the folder <code>~/.unison/</code> with extension
+<code>.prf</code>.  The profiles are server specific but you can have an almost
+identical copy for the servers, e.g., the two files
+<code>~/.unison/doob.prf</code> and <code>~/.unison/gauss.prf</code> differ only by one
+line. See the example below and the manual for syntax of this file:
+</p>
+
+<p>
+<a href="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html">http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html</a>
+</p>
+
+<p>
+Example: contents of file <code>~/.unison/doob.prf</code>. Change <code>ubuntu-user</code> with your ubuntu user name and <code>bio737</code> with your
+KU-id:
+</p>
+
+<pre class="example">
+# Roots of the synchronization
+root = /home/ubuntu-user/
+root = ssh://bio737@doob//home/ifsv/bio737/
+
+# files
+path=.Rprofile
+path=.bashrc
+path=.unison/doob.prf
+path=.gitconfig
+path=.emacs
+
+# folders
+path=Desktop
+path=research
+path=bin
+
+# don't synchronise everything (regexp)
+ignore = Name *.exe
+ignore = Name *.o 
+ignore = Name *~
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org28976ac" class="outline-3">
+<h3 id="org28976ac">Run unison</h3>
+<div class="outline-text-3" id="text-org28976ac">
+<div class="org-src-container">
+<pre class="src src-sh">unison-gtk -addnoversionno doob.prf
+</pre>
+</div>
+
+<p>
+Then check if all directions are plausible, resolve <code>?</code> (if any), and press <code>GO</code>. </p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+Last update: 12 Mar 2019 by Thomas Alexander Gerds.
+</div>
+</body>
+</html>
