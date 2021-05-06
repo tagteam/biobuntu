@@ -20,57 +20,50 @@ changes before they are applied. For example, if the clock of the
 server is not set correctly we could otherwise risk to overwrite our
 precious work with an older version.
 
-** Install unison on ubuntu 
+** Install unison (on ubuntu) 
+
+It may be possible to install unison using system facilities but since
+unison works best (read: works only if) when it has been build with
+the same ocaml version on both machines we recommend the following: 
+
+1. Download the newest version here: https://github.com/bcpierce00/unison/releases
+2. Unpack the tar ball via shell command (terminal): 
+
+=tar xfz unison-v2.51.4_rc1+ocaml-4.05.0+x86_64.linux.tar.gz=
+
+3. [@3] Copy the files unison and unison-gtk2 to a place where your computer finds them
+
+This typically is a folder called =bin= in home directory, i.e.,
+=~/bin=. Then, check if your personal =bin= folder is in the path.  To
+do so, look at the result of =echo $PATH= in a terminal. If your
+personal =bin= folder is not in the path add the following lines
+to the file =~/.bashrc=: 
 
 #+BEGIN_SRC sh
-sudo apt-get install --assume-yes liblablgtk-extras-ocaml-dev
-sudo apt-get install --assume-yes unison unison-gtk unison-all unison-all-gtk
-#+END_SRC
-
-** Check Unison version on the server
-
-The unison versions of the ubuntu machine needs to match the one on
-the server:
-
-#+BEGIN_SRC sh
-/usr/local/bin/unison -version
-#+END_SRC
-
-*** borel, gauss
-
-Should be fine. 
-
-*** doob, rasch
-
-Unfortunately, the current version of unison on our redhat servers
-(doob, rasch) is too low. Fortunately, there is a way ...
-
-1) Create private bin (unless it exists)
-
-#+BEGIN_SRC sh
-ssh -X bio737@doob
-mkdir ~/bin
-#+END_SRC
-
-2) [@2] set PATH so it includes user's private bin if it exists
-
-#+BEGIN_SRC sh
-# we are on the server side (e.g., doob) here
+# set PATH so it includes user's private bin if it exists
  if [ -d ~/bin ]; then
    PATH=~/bin:"${PATH}"
  fi
 #+END_SRC
+A final check is to evaluate the shell commands =which
+unison= and =which unison-gtk2=. They should show the freshly unpacked unison
+binaries.
 
-3) [@3] copy binary 
+4. [@4] Copy the exact same files also to a =bin= folder in your
+   respective home folder on =doob=. You can do this with secure copy,
+   i.e., =scp=. The machine called =doob= is a virtual linux server
+   which runs redhat (not ubuntu). Make sure that also here the shell commands
+   =which unison= and =which unison-gtk2= show the freshly unpacked
+   unison binaries also on doob.
 
-#+BEGIN_SRC sh
-# we are still on the server side (e.g., doob) here
-cp /home/ifsv/grb615/bin/unison ~/bin/unison
-chmod 751 ~/bin/unison # make it executable
-which unison # check if this now shows ~/bin/unison and NOT /usr/local/bin/unison
-#+END_SRC
 
-** Setup unison profile
+
+# #+BEGIN_SRC sh
+# sudo apt-get install --assume-yes liblablgtk-extras-ocaml-dev
+# sudo apt-get install --assume-yes unison unison-gtk unison-all unison-all-gtk
+# #+END_SRC
+
+** Setup a unison profile
 
 The profiles are saved in the folder =~/.unison/= with extension
 =.prf=.  The profiles are server specific but you can have an almost
@@ -109,7 +102,7 @@ ignore = Name *~
 ** Run unison
 
 #+BEGIN_SRC sh
-unison-gtk -addnoversionno doob.prf
+unison-gtk -addversionno doob.prf
 #+END_SRC
 
 Then check if all directions are plausible, resolve =?= (if any), and press =GO=. 

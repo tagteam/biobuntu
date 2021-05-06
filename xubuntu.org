@@ -8,7 +8,26 @@
     
 To install a fresh ubuntu system on your computer:
 
-- download iso e.g., here: http://xubuntu.org/getxubuntu/
+** Download iso
+
+e.g., here: http://xubuntu.org/getxubuntu/
+
+- save the .torrent file in a place like Downloads and then use a program such as transition to download 
+
+** Format the usb-key
+
+e.g., use program =gparted=. if not installed yet, get it:
+
+#+BEGIN_SRC sh
+sudo apt-get install gparted --assume-yes
+#+END_SRC
+
+then launch =gparted= and format the usb-key as =ntfs=.  If in doubt
+about which is which inside =gparted=, you could temporarily remove
+the usb-key.
+
+** Create 
+
 - install =usb-creator-gtk= 
 
 #+BEGIN_SRC sh
@@ -20,6 +39,9 @@ sudo apt-get install install usb-creator-gtk --assume-yes
 #+BEGIN_SRC sh
 usb-creator-gtk&
 #+END_SRC   
+
+Here you choose the ubuntu version =iso= file from step one above and
+also the usb-key. 
 
 Reference: https://help.ubuntu.com/community/Installation/FromUSBStick
 

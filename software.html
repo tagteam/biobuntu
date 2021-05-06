@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-12 Tue 12:20 -->
+<!-- 2019-10-12 Sat 08:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>biobuntu software</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -186,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,26 +248,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e44580">Clicki-clicki software install interface</a></li>
-<li><a href="#org87ac8fa">LaTeX and close friends</a></li>
-<li><a href="#orga9e0744">R and close friends</a></li>
-<li><a href="#orgd664ccc">Git</a></li>
-<li><a href="#org8d7d927">pdf tools</a>
+<li><a href="#org39fb592">Clicki-clicki software install interface</a></li>
+<li><a href="#org71670d4">Wireless</a></li>
+<li><a href="#orgb9565b1">LaTeX and close friends</a></li>
+<li><a href="#orgbf04a79">R and close friends</a>
 <ul>
-<li><a href="#orge58f2ad">pdf editor</a></li>
+<li><a href="#org2d0c8d9">Upgrade R (only if higher version is needed)</a>
+<ul>
+<li><a href="#org81bcf4e">Step 1 Remove R</a></li>
+<li><a href="#org4b86d97">Step 2 add repository and install newest version</a></li>
 </ul>
 </li>
-<li><a href="#orgc2c06ea">Window manager</a></li>
-<li><a href="#org85814c6">Search engines</a></li>
-<li><a href="#orgbea8b86">Chrome</a></li>
-<li><a href="#orgf75eefc">Printing</a></li>
+</ul>
+</li>
+<li><a href="#orgb4fe6aa">Git</a></li>
+<li><a href="#org6006cd2">pdf tools</a>
+<ul>
+<li><a href="#orga491da4">pdf editor</a></li>
+</ul>
+</li>
+<li><a href="#orgb992ea6">Window manager</a></li>
+<li><a href="#org2847f1a">Search engines</a></li>
+<li><a href="#org5fd6afd">Chrome</a></li>
+<li><a href="#orge21346b">Printing</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0e44580" class="outline-2">
-<h2 id="org0e44580">Clicki-clicki software install interface</h2>
-<div class="outline-text-2" id="text-org0e44580">
+<div id="outline-container-org39fb592" class="outline-2">
+<h2 id="org39fb592">Clicki-clicki software install interface</h2>
+<div class="outline-text-2" id="text-org39fb592">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install --assume-yes synaptic
 </pre>
@@ -271,9 +294,19 @@ Launch it like this:
 </div>
 </div>
 
-<div id="outline-container-org87ac8fa" class="outline-2">
-<h2 id="org87ac8fa">LaTeX and close friends</h2>
-<div class="outline-text-2" id="text-org87ac8fa">
+<div id="outline-container-org71670d4" class="outline-2">
+<h2 id="org71670d4">Wireless</h2>
+<div class="outline-text-2" id="text-org71670d4">
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install --assume-yes wicd wicd-gtk
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb9565b1" class="outline-2">
+<h2 id="orgb9565b1">LaTeX and close friends</h2>
+<div class="outline-text-2" id="text-orgb9565b1">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install --assume-yes texlive texlive-science texlive-base texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra biber texi2html texinfo 
 sudo apt-get install --assume-yes perl latexmk gv html2text geeqie html2text bibtex2html 
@@ -282,9 +315,9 @@ sudo apt-get install --assume-yes perl latexmk gv html2text geeqie html2text bib
 </div>
 </div>
 
-<div id="outline-container-orga9e0744" class="outline-2">
-<h2 id="orga9e0744">R and close friends</h2>
-<div class="outline-text-2" id="text-orga9e0744">
+<div id="outline-container-orgbf04a79" class="outline-2">
+<h2 id="orgbf04a79">R and close friends</h2>
+<div class="outline-text-2" id="text-orgbf04a79">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install --assume-yes r-base-core r-base-dev
 sudo apt-get install --assume-yes graphviz markdown ecryptfs-utils valgrind xml2 unicode
@@ -293,11 +326,43 @@ sudo apt-get install --assume-yes gnutls-bin curl libcurl4-openssl-dev libssl-de
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org2d0c8d9" class="outline-3">
+<h3 id="org2d0c8d9">Upgrade R (only if higher version is needed)</h3>
+<div class="outline-text-3" id="text-org2d0c8d9">
+</div>
+<div id="outline-container-org81bcf4e" class="outline-4">
+<h4 id="org81bcf4e">Step 1 Remove R</h4>
+<div class="outline-text-4" id="text-org81bcf4e">
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt update
+sudo apt purge r-base r-recommended r-cran-*
+sudo apt autoremove
+sudo apt update
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgd664ccc" class="outline-2">
-<h2 id="orgd664ccc">Git</h2>
-<div class="outline-text-2" id="text-orgd664ccc">
+<div id="outline-container-org4b86d97" class="outline-4">
+<h4 id="org4b86d97">Step 2 add repository and install newest version</h4>
+<div class="outline-text-4" id="text-org4b86d97">
+<div class="org-src-container">
+<pre class="src src-sh">sudo add-apt-repository <span style="color: #8b2252;">'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'</span>
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+sudo apt update
+sudo apt-get install r-base
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb4fe6aa" class="outline-2">
+<h2 id="orgb4fe6aa">Git</h2>
+<div class="outline-text-2" id="text-orgb4fe6aa">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install git git-svn subversion pandoc pandoc-citeproc 
 </pre>
@@ -305,9 +370,9 @@ sudo apt-get install --assume-yes gnutls-bin curl libcurl4-openssl-dev libssl-de
 </div>
 </div>
 
-<div id="outline-container-org8d7d927" class="outline-2">
-<h2 id="org8d7d927">pdf tools</h2>
-<div class="outline-text-2" id="text-org8d7d927">
+<div id="outline-container-org6006cd2" class="outline-2">
+<h2 id="org6006cd2">pdf tools</h2>
+<div class="outline-text-2" id="text-org6006cd2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">split pdf into many</span>
 sudo apt install assume-yes pdftk psutils
@@ -320,9 +385,9 @@ sudo apt-get install wv tetex-extra ghostscript --assume-yes
 </div>
 </div>
 
-<div id="outline-container-orge58f2ad" class="outline-3">
-<h3 id="orge58f2ad">pdf editor</h3>
-<div class="outline-text-3" id="text-orge58f2ad">
+<div id="outline-container-orga491da4" class="outline-3">
+<h3 id="orga491da4">pdf editor</h3>
+<div class="outline-text-3" id="text-orga491da4">
 <p>
 masterpdf: <a href="https://code-industry.net/masterpdfeditor/">https://code-industry.net/masterpdfeditor/</a>
 </p>
@@ -331,9 +396,9 @@ masterpdf: <a href="https://code-industry.net/masterpdfeditor/">https://code-ind
 </div>
 
 
-<div id="outline-container-orgc2c06ea" class="outline-2">
-<h2 id="orgc2c06ea">Window manager</h2>
-<div class="outline-text-2" id="text-orgc2c06ea">
+<div id="outline-container-orgb992ea6" class="outline-2">
+<h2 id="orgb992ea6">Window manager</h2>
+<div class="outline-text-2" id="text-orgb992ea6">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">window manager: xfce</span>
 sudo apt-get install --assume-yes xfce4 xfce4-goodies 
@@ -344,9 +409,9 @@ sudo apt-get install --assume-yes xdotool wmctrl
 </div>
 </div>
 
-<div id="outline-container-org85814c6" class="outline-2">
-<h2 id="org85814c6">Search engines</h2>
-<div class="outline-text-2" id="text-org85814c6">
+<div id="outline-container-org2847f1a" class="outline-2">
+<h2 id="org2847f1a">Search engines</h2>
+<div class="outline-text-2" id="text-org2847f1a">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install --assume-yes silversearcher-ag recoll notmuch libxapian-dev libgmime-2.6-dev libtalloc-dev zlib1g-dev
 </pre>
@@ -354,9 +419,9 @@ sudo apt-get install --assume-yes xdotool wmctrl
 </div>
 </div>
 
-<div id="outline-container-orgbea8b86" class="outline-2">
-<h2 id="orgbea8b86">Chrome</h2>
-<div class="outline-text-2" id="text-orgbea8b86">
+<div id="outline-container-org5fd6afd" class="outline-2">
+<h2 id="org5fd6afd">Chrome</h2>
+<div class="outline-text-2" id="text-org5fd6afd">
 <div class="org-src-container">
 <pre class="src src-sh">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c <span style="color: #8b2252;">'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google-chrome.list'</span>
@@ -367,9 +432,9 @@ sudo apt-get install google-chrome-stable
 </div>
 </div>
 
-<div id="outline-container-orgf75eefc" class="outline-2">
-<h2 id="orgf75eefc">Printing</h2>
-<div class="outline-text-2" id="text-orgf75eefc">
+<div id="outline-container-orge21346b" class="outline-2">
+<h2 id="orge21346b">Printing</h2>
+<div class="outline-text-2" id="text-orge21346b">
 <div class="org-src-container">
 <pre class="src src-sh">sudo apt-get install cups-pdf --assume-yes
 </pre>
@@ -378,7 +443,7 @@ sudo apt-get install google-chrome-stable
 </div>
 </div>
 <div id="postamble" class="status">
-Last update: 12 Mar 2019 by Thomas Alexander Gerds.
+Last update: 12 Oct 2019 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>

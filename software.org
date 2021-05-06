@@ -37,6 +37,24 @@ sudo apt-get install --assume-yes python-pip python-rarfile python-virtualenv
 sudo apt-get install --assume-yes gnutls-bin curl libcurl4-openssl-dev libssl-dev
 #+END_SRC
 
+** Upgrade R (only if higher version is needed)
+
+*** Step 1 Remove R
+#+BEGIN_SRC sh
+  sudo apt update
+  sudo apt purge r-base r-recommended r-cran-*
+  sudo apt autoremove
+  sudo apt update
+#+END_SRC
+
+*** Step 2 add repository and install newest version
+#+BEGIN_SRC sh
+  sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+  sudo apt update
+  sudo apt-get install r-base
+#+END_SRC
+
 * Git 
 
 #+BEGIN_SRC sh

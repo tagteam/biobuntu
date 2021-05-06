@@ -75,7 +75,6 @@ network={
 Add a line with the word =eduroam= to the file (edit as sudo)
 [[/etc/wicd/encryption/templates/active]]
   
-
 *** Step 3 
 
 launch wicd-gtk, select =eduroam= under encryption and specify

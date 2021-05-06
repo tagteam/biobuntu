@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-12 Tue 12:15 -->
+<!-- 2019-03-22 Fri 15:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>biobuntu: install and upgrade xubuntu</title>
@@ -235,22 +235,64 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5ee09b3">First time installation</a></li>
-<li><a href="#orga24a78b">Upgrade</a></li>
+<li><a href="#orgcfd99ac">First time installation</a>
+<ul>
+<li><a href="#org45829c5">Download iso</a></li>
+<li><a href="#org132ded4">Format the usb-key</a></li>
+<li><a href="#org5323606">Create</a></li>
+</ul>
+</li>
+<li><a href="#org67dd8a7">Upgrade</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org5ee09b3" class="outline-2">
-<h2 id="org5ee09b3">First time installation</h2>
-<div class="outline-text-2" id="text-org5ee09b3">
+<div id="outline-container-orgcfd99ac" class="outline-2">
+<h2 id="orgcfd99ac">First time installation</h2>
+<div class="outline-text-2" id="text-orgcfd99ac">
 <p>
 To install a fresh ubuntu system on your computer:
 </p>
+</div>
+
+<div id="outline-container-org45829c5" class="outline-3">
+<h3 id="org45829c5">Download iso</h3>
+<div class="outline-text-3" id="text-org45829c5">
+<p>
+e.g., here: <a href="http://xubuntu.org/getxubuntu/">http://xubuntu.org/getxubuntu/</a>
+</p>
 
 <ul class="org-ul">
-<li>download iso e.g., here: <a href="http://xubuntu.org/getxubuntu/">http://xubuntu.org/getxubuntu/</a></li>
+<li>save the .torrent file in a place like Downloads and then use a program such as transition to download</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org132ded4" class="outline-3">
+<h3 id="org132ded4">Format the usb-key</h3>
+<div class="outline-text-3" id="text-org132ded4">
+<p>
+e.g., use program <code>gparted</code>. if not installed yet, get it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sudo apt-get install gparted --assume-yes
+</pre>
+</div>
+
+<p>
+then launch <code>gparted</code> and format the usb-key as <code>ntfs</code>.  If in doubt
+about which is which inside <code>gparted</code>, you could temporarily remove
+the usb-key.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5323606" class="outline-3">
+<h3 id="org5323606">Create</h3>
+<div class="outline-text-3" id="text-org5323606">
+<ul class="org-ul">
 <li>install <code>usb-creator-gtk</code></li>
 </ul>
 
@@ -269,14 +311,20 @@ To install a fresh ubuntu system on your computer:
 </div>
 
 <p>
+Here you choose the ubuntu version <code>iso</code> file from step one above and
+also the usb-key. 
+</p>
+
+<p>
 Reference: <a href="https://help.ubuntu.com/community/Installation/FromUSBStick">https://help.ubuntu.com/community/Installation/FromUSBStick</a>
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orga24a78b" class="outline-2">
-<h2 id="orga24a78b">Upgrade</h2>
-<div class="outline-text-2" id="text-orga24a78b">
+<div id="outline-container-org67dd8a7" class="outline-2">
+<h2 id="org67dd8a7">Upgrade</h2>
+<div class="outline-text-2" id="text-org67dd8a7">
 <ul class="org-ul">
 <li>Back up:</li>
 </ul>
@@ -310,7 +358,7 @@ sudo do-release-upgrade
 </div>
 </div>
 <div id="postamble" class="status">
-Last update: 12 Mar 2019 by Thomas Alexander Gerds.
+Last update: 22 Mar 2019 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>

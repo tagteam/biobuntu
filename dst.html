@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-12 Tue 12:14 -->
+<!-- 2019-10-12 Sat 08:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>biobuntu dst</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -186,7 +199,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -235,21 +248,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org33dd75c">Requirement: freerdp</a></li>
-<li><a href="#orgad8fe32">Connect to dst</a>
+<li><a href="#orgaada01e">Requirement: freerdp</a></li>
+<li><a href="#org945cddf">Connect to dst</a>
 <ul>
-<li><a href="#orgadd15cd">open firewall</a></li>
-<li><a href="#org6568b0b">Download launcher</a></li>
-<li><a href="#org134debb">Run xfreerdp</a></li>
+<li><a href="#org7d117d1">open firewall</a></li>
+<li><a href="#org8c88b12">Download launcher</a></li>
+<li><a href="#org7ad458a">Run xfreerdp</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org33dd75c" class="outline-2">
-<h2 id="org33dd75c">Requirement: freerdp</h2>
-<div class="outline-text-2" id="text-org33dd75c">
+<div id="outline-container-orgaada01e" class="outline-2">
+<h2 id="orgaada01e">Requirement: freerdp</h2>
+<div class="outline-text-2" id="text-orgaada01e">
 <p>
 <a href="https://github.com/FreeRDP/FreeRDP/wiki/Compilation">https://github.com/FreeRDP/FreeRDP/wiki/Compilation</a>
 </p>
@@ -269,9 +282,22 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 <pre class="src src-sh">git clone https://github.com/FreeRDP/FreeRDP.git
-sudo apt-get install --assume-yes build-essential git-core debhelper cdbs dpkg-dev autotools-dev cmake pkg-config xmlto libssl-dev docbook-xsl xsltproc libxkbfile-dev libx11-dev libwayland-dev libxrandr-dev libxi-dev libxrender-dev libxext-dev libxinerama-dev libxfixes-dev libxcursor-dev libxv-dev libxdamage-dev libxtst-dev libcups2-dev libpcsclite-dev libasound2-dev libpulse-dev libjpeg-dev libgsm1-dev libusb-1.0-0-dev libudev-dev libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer0.10-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-base0.10-dev
+sudo apt-get install --assume-yes build-essential 
+sudo apt-get install --assume-yes git-core debhelper cdbs
+sudo apt-get install --assume-yes dpkg-dev autotools-dev cmake 
+sudo apt-get install --assume-yes pkg-config xmlto libssl-dev
+sudo apt-get install --assume-yes docbook-xsl xsltproc 
+sudo apt-get install --assume-yes libxkbfile-dev libx11-dev libwayland-dev
+sudo apt-get install --assume-yes libxrandr-dev libxi-dev libxrender-dev
+sudo apt-get install --assume-yes libxext-dev libxinerama-dev libxfixes-dev
+sudo apt-get install --assume-yes libxcursor-dev libxv-dev libxdamage-dev
+sudo apt-get install --assume-yes libxtst-dev libcups2-dev libpcsclite-dev
+sudo apt-get install --assume-yes libasound2-dev libpulse-dev libjpeg-dev
+sudo apt-get install --assume-yes libgsm1-dev libusb-1.0-0-dev libudev-dev
+sudo apt-get install --assume-yes libdbus-glib-1-dev uuid-dev libxml2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
 sudo apt-get install --assume-yes libavutil-dev libavcodec-dev libcunit1-dev libdirectfb-dev xmlto doxygen libxtst-dev
 
+<span style="color: #483d8b;">cd</span> FreeRDP
 cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON .
 make
 sudo make install
@@ -281,13 +307,13 @@ sudo ldconfig
 </div>
 </div>
 
-<div id="outline-container-orgad8fe32" class="outline-2">
-<h2 id="orgad8fe32">Connect to dst</h2>
-<div class="outline-text-2" id="text-orgad8fe32">
+<div id="outline-container-org945cddf" class="outline-2">
+<h2 id="org945cddf">Connect to dst</h2>
+<div class="outline-text-2" id="text-org945cddf">
 </div>
-<div id="outline-container-orgadd15cd" class="outline-3">
-<h3 id="orgadd15cd">open firewall</h3>
-<div class="outline-text-3" id="text-orgadd15cd">
+<div id="outline-container-org7d117d1" class="outline-3">
+<h3 id="org7d117d1">open firewall</h3>
+<div class="outline-text-3" id="text-org7d117d1">
 <p>
 <a href="https://remote.dst.dk/">https://remote.dst.dk/</a>
 </p>
@@ -300,9 +326,9 @@ Token: use mobil phone (or token-dims)
 </div>
 </div>
 
-<div id="outline-container-org6568b0b" class="outline-3">
-<h3 id="org6568b0b">Download launcher</h3>
-<div class="outline-text-3" id="text-org6568b0b">
+<div id="outline-container-org8c88b12" class="outline-3">
+<h3 id="org8c88b12">Download launcher</h3>
+<div class="outline-text-3" id="text-org8c88b12">
 <p>
 Click on the server and save the file: 
 </p>
@@ -313,9 +339,9 @@ Click on the server and save the file:
 </div>
 </div>
 
-<div id="outline-container-org134debb" class="outline-3">
-<h3 id="org134debb">Run xfreerdp</h3>
-<div class="outline-text-3" id="text-org134debb">
+<div id="outline-container-org7ad458a" class="outline-3">
+<h3 id="org7ad458a">Run xfreerdp</h3>
+<div class="outline-text-3" id="text-org7ad458a">
 <div class="org-src-container">
 <pre class="src src-sh">xfreerdp /home/ubuntu-user/dst/launch1f721a82.rdp /size:1900x1050  /u:XYZ6818@dstfse.local /p:secretpassword
 </pre>
@@ -325,7 +351,7 @@ Click on the server and save the file:
 </div>
 </div>
 <div id="postamble" class="status">
-Last update: 12 Mar 2019 by Thomas Alexander Gerds.
+Last update: 12 Oct 2019 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>
