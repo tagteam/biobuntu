@@ -1,0 +1,68 @@
+#+TITLE: biobuntu paths
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+This is a very brief introduction to the =PATH= variable.
+
+* What is an executable program?
+
+A program is executable when the =x= flag is set for the user. E.g.,
+
+#+BEGIN_SRC sh
+ls -alort /usr/bin/soffice
+#+END_SRC
+
+An executable program, such as =/usr/bin/soffice=, can be executed
+from the terminal using the full path:
+
+#+BEGIN_SRC sh
+/usr/bin/soffice --version
+#+END_SRC
+
+If the directory, in this case =/usr/bin= is in the =PATH= the program
+can also be executed without the path:
+
+#+BEGIN_SRC sh
+soffice --version
+#+END_SRC
+
+You can locate programs in the =PATH= as follows:
+
+#+BEGIN_SRC sh
+which soffice
+#+END_SRC
+
+* The =PATH= variable
+
+On a linux (unix) system the terminal variable =PATH= shows were
+executable programs are found.
+The =PATH= variable contains one or multiple the
+directories separated by =:= (the order matters)
+
+#+BEGIN_SRC sh
+echo $PATH
+#+END_SRC
+
+* Adding a personal folder: bin
+
+If you want to execute programs that were installed locally or
+homegrown shell scripts it is useful to have a personal bin added to
+the =PATH= such that these programs/scripts can be executed without
+the path.
+
+1) Create private director called =bin= (unless it exists)
+
+#+BEGIN_SRC sh
+mkdir ~/bin
+#+END_SRC
+
+2) [@2] Edit the file =~/.bashrc= and set =PATH= so it includes user's private bin if it exists
+
+#+BEGIN_SRC sh
+# we are on the server side (e.g., doob) here
+ if [ -d ~/bin ]; then
+   PATH=~/bin:"${PATH}"
+ fi
+#+END_SRC
+

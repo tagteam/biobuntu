@@ -1,0 +1,144 @@
+#+TITLE: biobuntu server file system
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+#+superman-export-target: html
+
+In all of the following =*Terminal*= codes you should replace =bio737=
+with your own *KU-id*. Shout out loud (we need to be able to hear you
+in bygning 15) if you run into unclearness, typos or really unsolvable
+problems ...
+
+* Background
+
+Here we explain how to deal with the situation after the
+great consolidation in fall 2021.
+
+Our linux servers are used to:
+ 1. run simulations and data analyses that require multiple cores or a lot of memory.
+ 2. to back up our work, i.e., to synchronize the files that you have on your bring-your-own-device with the KU file system.
+
+** Linux home 
+ 
+When you login to one of our linux servers, e.g., doob (see
+[[./connect]]), you are in your home folder which is
+
+#+BEGIN_SRC sh
+/home/bio737
+#+END_SRC
+
+In this place you are not allowed to have more than 10 Gb.
+
+** Windows file system
+   
+You have a subdirectory called =ucph= where KU-IT has mounted
+their windows file server with all your files in a subdirectory called
+=hdir=. The mount may first happen when you change directory:
+
+#+BEGIN_SRC sh
+cd /home/bio737/ucph/hdir
+#+END_SRC
+
+In here your files are in another subdirectory:
+
+#+BEGIN_SRC sh
+cd /home/bio737/ucph/hdir/SundKonsolidering_biostat/
+#+END_SRC
+
+In fact you can move all folders and files out of this subdirectory and then
+remove it:
+
+#+BEGIN_SRC sh
+mv /home/bio737/ucph/hdir/SundKonsolidering_biostat/* /home/bio737/ucph/hdir/
+rm -r /home/bio737/ucph/hdir/SundKonsolidering_biostat
+#+END_SRC
+
+** Fast Linux file system 
+
+There is also a fast harddisk that you can access under
+
+#+BEGIN_SRC sh
+/projects/biostat01/people/bio737/
+#+END_SRC
+
+You should synchronize your bring-your-own-device files with this fast
+linux drive. See instructions below.
+
+* Copy all files from the window drive to the linux drive
+
+In a terminal log-in to =doob= or =rasch= via ssh. There you copy all
+your files
+
+#+BEGIN_SRC sh
+cp -r /home/bio737/ucph/hdir/* /projects/biostat01/people/bio737/
+#+END_SRC
+
+If this take a long time you can run this in the background such that
+it continuous to after you have logged out:
+
+#+BEGIN_SRC sh
+nohub cp -r /home/bio737/ucph/hdir/* /projects/biostat01/people/bio737/
+#+END_SRC
+  
+* Synchronize files
+
+There are two possibilities:
+
+1. Remotely: run unison to synchronize your files with the linux drive on the server
+2. Locally: first mount the linux drive and then run unison locally
+  
+** Remotely: Unison
+
+Here is an example =.prf= file:
+   
+#+BEGIN_example
+root = /home/user-name-on-bring-your-own-device/
+root = ssh://bio737@doob//home/ifsv/bio737/
+
+# allow that new directories are created  
+watch = false
+
+path = .bashrc
+path = research
+path = projects
+
+ignore = Name *.exe
+ignore = Name *.~
+ignore = Name *.o
+#+END_example
+   
+  
+** Locally: Unison
+
+First, to mount the file system into your bring-your-own-device create
+a directory in your bring-your-own-device, e.g., a directory called
+=doob= (you have to this only once!):
+
+#+BEGIN_SRC sh
+mkdir ~/doob
+#+END_SRC   
+
+Mount the fast linux drive (you have to do this every time):
+
+#+BEGIN_SRC sh
+sshfs bio737@biostatcomp03fl:/projects/biostat01/people/bio737 ~/doob
+#+END_SRC   
+
+Here is an example =.prf= file:
+
+#+BEGIN_example
+root = /home/user-name-on-bring-your-own-device/
+root = /home/user-name-on-bring-your-own-device/doob
+
+# allow that new directories are created  
+watch = false
+
+path = .bashrc
+path = research
+path = projects
+
+ignore = Name *.exe
+ignore = Name *.~
+ignore = Name *.o
+#+END_example
+
+

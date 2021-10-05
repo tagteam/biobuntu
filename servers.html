@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-10-05 Tue 10:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>biobuntu server file system</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Thomas Alexander Gerds Thomas A. Gerds" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://publicifsv.sund.ku.dk/~tag/styles/practicals.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<p class="course-menu"><a accesskey="h" href="README.html">Home</a>&nbsp;<a accesskey="p" href="https://github.com/tagteam">github</a></p><div id="preamble" class="status">
+<br>Thomas Alexander Gerds Thomas A. Gerds
+</div>
+<div id="content">
+<h1 class="title">biobuntu server file system</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org55bf7e0">Background</a>
+<ul>
+<li><a href="#org7fe14c0">Linux home</a></li>
+<li><a href="#orgfbeb42c">Windows file system</a></li>
+<li><a href="#org4a3c451">Fast Linux file system</a></li>
+</ul>
+</li>
+<li><a href="#orgcddc3f3">Copy all files from the window drive to the linux drive</a></li>
+<li><a href="#org9665f05">Synchronize files</a>
+<ul>
+<li><a href="#orgcf048a0">Remotely: Unison</a></li>
+<li><a href="#orgd5151d3">Locally: Unison</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+In all of the following <code>*Terminal*</code> codes you should replace <code>bio737</code>
+with your own <b>KU-id</b>. Shout out loud (we need to be able to hear you
+in bygning 15) if you run into unclearness, typos or really unsolvable
+problems &#x2026;
+</p>
+
+<div id="outline-container-org55bf7e0" class="outline-2">
+<h2 id="org55bf7e0">Background</h2>
+<div class="outline-text-2" id="text-org55bf7e0">
+<p>
+Here we explain how to deal with the situation after the
+great consolidation in fall 2021.
+</p>
+
+<p>
+Our linux servers are used to:
+</p>
+<ol class="org-ol">
+<li>run simulations and data analyses that require multiple cores or a lot of memory.</li>
+<li>to back up our work, i.e., to synchronize the files that you have on your bring-your-own-device with the KU file system.</li>
+</ol>
+</div>
+
+<div id="outline-container-org7fe14c0" class="outline-3">
+<h3 id="org7fe14c0">Linux home</h3>
+<div class="outline-text-3" id="text-org7fe14c0">
+<p>
+When you login to one of our linux servers, e.g., doob (see
+<a href="./connect">./connect</a>), you are in your home folder which is
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">/home/bio737
+</pre>
+</div>
+
+<p>
+In this place you are not allowed to have more than 10 Gb.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbeb42c" class="outline-3">
+<h3 id="orgfbeb42c">Windows file system</h3>
+<div class="outline-text-3" id="text-orgfbeb42c">
+<p>
+You have a subdirectory called <code>ucph</code> where KU-IT has mounted
+their windows file server with all your files in a subdirectory called
+<code>hdir</code>. The mount may first happen when you change directory:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #483d8b;">cd</span> /home/bio737/ucph/hdir
+</pre>
+</div>
+
+<p>
+In here your files are in another subdirectory:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #483d8b;">cd</span> /home/bio737/ucph/hdir/SundKonsolidering_biostat/
+</pre>
+</div>
+
+<p>
+In fact you can move all folders and files out of this subdirectory and then
+remove it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mv /home/bio737/ucph/hdir/SundKonsolidering_biostat/* /home/bio737/ucph/hdir/
+rm -r /home/bio737/ucph/hdir/SundKonsolidering_biostat
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4a3c451" class="outline-3">
+<h3 id="org4a3c451">Fast Linux file system</h3>
+<div class="outline-text-3" id="text-org4a3c451">
+<p>
+There is also a fast harddisk that you can access under
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">/projects/biostat01/people/bio737/
+</pre>
+</div>
+
+<p>
+You should synchronize your bring-your-own-device files with this fast
+linux drive. See instructions below.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcddc3f3" class="outline-2">
+<h2 id="orgcddc3f3">Copy all files from the window drive to the linux drive</h2>
+<div class="outline-text-2" id="text-orgcddc3f3">
+<p>
+In a terminal log-in to <code>doob</code> or <code>rasch</code> via ssh. There you copy all
+your files
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">cp -r /home/bio737/ucph/hdir/* /projects/biostat01/people/bio737/
+</pre>
+</div>
+
+<p>
+If this take a long time you can run this in the background such that
+it continuous to after you have logged out:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">nohub cp -r /home/bio737/ucph/hdir/* /projects/biostat01/people/bio737/
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9665f05" class="outline-2">
+<h2 id="org9665f05">Synchronize files</h2>
+<div class="outline-text-2" id="text-org9665f05">
+<p>
+There are two possibilities:
+</p>
+
+<ol class="org-ol">
+<li>Remotely: run unison to synchronize your files with the linux drive on the server</li>
+<li>Locally: first mount the linux drive and then run unison locally</li>
+</ol>
+</div>
+
+<div id="outline-container-orgcf048a0" class="outline-3">
+<h3 id="orgcf048a0">Remotely: Unison</h3>
+<div class="outline-text-3" id="text-orgcf048a0">
+<p>
+Here is an example <code>.prf</code> file:
+</p>
+
+<pre class="example" id="orgacbff9e">
+root = /home/user-name-on-bring-your-own-device/
+root = ssh://bio737@doob//home/ifsv/bio737/
+
+# allow that new directories are created  
+watch = false
+
+path = .bashrc
+path = research
+path = projects
+
+ignore = Name *.exe
+ignore = Name *.~
+ignore = Name *.o
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgd5151d3" class="outline-3">
+<h3 id="orgd5151d3">Locally: Unison</h3>
+<div class="outline-text-3" id="text-orgd5151d3">
+<p>
+First, to mount the file system into your bring-your-own-device create
+a directory in your bring-your-own-device, e.g., a directory called
+<code>doob</code> (you have to this only once!):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">mkdir ~/doob
+</pre>
+</div>
+
+<p>
+Mount the fast linux drive (you have to do this every time):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">sshfs bio737@biostatcomp03fl:/projects/biostat01/people/bio737 ~/doob
+</pre>
+</div>
+
+<p>
+Here is an example <code>.prf</code> file:
+</p>
+
+<pre class="example" id="orgfca4180">
+root = /home/user-name-on-bring-your-own-device/
+root = /home/user-name-on-bring-your-own-device/doob
+
+# allow that new directories are created  
+watch = false
+
+path = .bashrc
+path = research
+path = projects
+
+ignore = Name *.exe
+ignore = Name *.~
+ignore = Name *.o
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+Last update: 05 Oct 2021 by Thomas Alexander Gerds.
+</div>
+</body>
+</html>
