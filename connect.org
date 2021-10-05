@@ -6,18 +6,21 @@
 * Preparation
 
 In all of the following =*Terminal*= codes you should replace =bio737=
-with your own *KU-id*. Shout out loud if you run into unclear
-statements, typos or real problems ...
+with your own *KU-id*. Shout out loud (we need to be able to hear you
+in bygning 15) if you run into unclearness, typos or really unsolvable
+problems ...
 
 ** Biostat computing servers 
 The computing servers with ssh access are 
 
 - =doob= (virtual)
 - =rasch= (virtual)
-- =gauss= (48 cores, anarchy)
-- =borel= (48 cores, anarchy)
-- =bayes= (64 cores, cue system)
-- =fisher= (64 cores, cue system)
+- =rao= (linux, cue system)
+- =cox= (linux, cue system)  
+# - =gauss= (48 cores, anarchy)
+# - =borel= (48 cores, anarchy)
+# - =bayes= (64 cores, cue system)
+# - =fisher= (64 cores, cue system)
 
 To connect with one of these machines you need to either be connected
 via cable at CSS or open a vpn connection (see instructions below).
@@ -27,163 +30,58 @@ Then, you can login to =doob= via:
 ssh -X bio737@doob
 #+END_SRC
 
-** Hard to remember?
+*** Hard to remember?
 
 Add aliases to the file =~/.bashrc=
 
 #+BEGIN_SRC sh
-alias gauss='ssh -X bio737@gauss'
-alias borel='ssh -X bio737@borel'
-alias fisher='ssh -X bio737@fisher'
-alias bayes='ssh -X bio737@bayes'
+alias cox='ssh -X bio737@cox'
+alias rao='ssh -X bio737@rao'
 alias doob='ssh -X bio737@doob'
+alias rasch='ssh -X bio737@rasch'
 #+END_SRC
 
 * Eduroam
 
 ** networkmanager
 
-You are on your own, but this can work.
+You are on your own, but this should work:
 
-** wicd: Eduroam template
+Wi-fi Security
 
-*** Step 1
+Security: WPA & WPA2 Enterprise
+Authentication: Protected EAP (PEAP)
+No CA certificate is required
+PEAP version: Version 0
+Inner authentication: MSCHAPv2
+Username: bio737
+Password: xxxx
 
-Create a file as sudo: [[/etc/wicd/encryption/templates/eduroam]]
-Insert the following and save the file:
+* Open vpn from a wireless connection 
 
-#+BEGIN_EXAMPLE
-name = EDUROAM
-author = ElitestFX
-version = 1
-require identity *Identity password *Password
------
-ctrl_interface=/var/run/wpa_supplicant
-network={
-        ssid="$_ESSID"
-        scan_ssid=$_SCAN
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        phase2="auth=MSCHAPV2"
-        identity="$_IDENTITY"
-        password="$_PASSWORD"
-}
-#+END_EXAMPLE
+Install cisco anyconnect and consider instructions inside
+KU intranet:
 
-*** Step 2
+- vpn.sund.ku.dk
+- library.sund.ku.dk 
 
-Add a line with the word =eduroam= to the file (edit as sudo)
-[[/etc/wicd/encryption/templates/active]]
+To open the vpn connection you need apply two-factor authentication.
+You can use a Yubikey or install NetIQ Advanced Authentication on your
+phone/tablet.
+
+** Graphical user interface
+
+#+BEGIN_SRC sh
+/opt/cisco/anyconnect/bin/vpnui
+#+END_SRC   
   
-*** Step 3 
-
-launch wicd-gtk, select =eduroam= under encryption and specify
-properties for eduroam:
-
-=identity = bio737@ku.dk=
-=password= your KU-password
-
-* Open vpn (wireless connection outside campus)
-
-Install openconnect:
-
+** Command line
+   
 #+BEGIN_SRC sh
-sudo apt-get install openconnect --assume-yes
+/opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
+# lazy?
+printf 'bio737\nXXXXX\ny' |   /opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
 #+END_SRC
-
-To open the vpn connection, You will need the =sudo= password of your
-ubuntu machine and the password for your *KU-id*:
-  
-#+BEGIN_SRC sh
-sudo openconnect --juniper -u bio737 vpn.sund.ku.dk
-#+END_SRC
-
-At the second prompt:
-
-#+BEGIN_SRC  sh
-realm [sund.ku.dk|Consultant|KU access]:
-#+END_SRC
-
-type =sund.ku.dk= followed by the =ENTER/RETURN= key.
-
-** Hard to remember?
-
-Typing =v= in a terminal is easier to remember and less typing effort
-than =sudo openconnect --juniper -u bio737 vpn.sund.ku.dk=.  To use
-this, simply, add the following line to the file =~/.bashrc=:
-
-#+BEGIN_SRC sh
-alias v='sudo openconnect --juniper -u bio737 vpn.sund.ku.dk'
-#+END_SRC
-
-** Tired of typing realm and password?  
-
-Could not find a very nice solution yet, but ...
-
-- Install =xdotool= 
-
-#+BEGIN_SRC sh
-sudo apt-get install xdotool  --assume-yes
-#+END_SRC
-
-- Create a shell script in your local =bin=, e.g., as =~/bin/vpn=, where you 
-  also substitute with your own password:
-  
-#+BEGIN_SRC sh
-xterm &
-sleep 0.5
-xdotool type "sudo openconnect --juniper -u bio737 vpn.sund.ku.dk"
-xdotool key Return
-sleep 0.5
-xdotool type "sund.ku.dk"
-xdotool key Return
-sleep 0.5
-xdotool type "xxxxxx"
-xdotool key Return
-#+END_SRC
-
-- Make the script executable but remove read/write access for other people:
-
-#+BEGIN_SRC sh
-chmod 700 ~/bin/vpn 
-#+END_SRC 
-
-- Execute shell script in terminal via 
-
-#+BEGIN_SRC  sh
-sudo ~/bin/vpn
-#+END_SRC
-
-- Create alias
-  
-#+BEGIN_SRC sh
-alias v='sudo ~/bin/vpn' # shell script
-#+END_SRC
-
-* Connect to server without typing the password
-
-** Open vpn (if it does not exist yet)
-
-Follow instructions above. 
-
-** Create folder .ssh on server (if needed)
-
-#+BEGIN_SRC sh
-ssh -X bio737@doob
-mkdir ~/.ssh
-#+END_SRC
-
-** Generate key
-
-#+BEGIN_SRC sh
-ssh-keygen -t rsa -C "bio737@sund.ku.dk"
-#+END_SRC
-
-** Export key
-#+BEGIN_SRC sh
-cat .ssh/id_rsa.pub | ssh bio737@doob 'cat >> .ssh/authorized_keys'
-#+END_SRC
-
 
 
 

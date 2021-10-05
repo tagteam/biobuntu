@@ -5,17 +5,18 @@
 
 * Greetings
 
-This is for the biostatisticians at KU with an outside ubuntu
+This is for the biostatisticians at KU with a bring-your-own-device ubuntu
 computer. Shout out loud (we need to hear you in building CSS-15) if
 you find a typo, a crypticum or missing data.
 
-| What               | Where          | Note                              |
-|--------------------+----------------+-----------------------------------|
-| System (xubuntu)   | [[./xubuntu.org]]  | Install and upgrade xubuntu       |
-| Software           | [[./software.org]] | Install typical biostats Software |
-| Connections        | [[./connect.org]]  | eduroam, vpn, doob, borel, ...,   |
-| Backup             | [[./backup.org]]   | Via unison                        |
-| Paths              | [[./paths.org]]    | how ubuntu finds your programs    |
-| Danmark Statistics | [[./dst.org]]      | Work with registry data           |
-| Google drive       | [[./google.org]]   | Work with google drive            |
+| What               | Where          | Note                                    |
+|--------------------+----------------+-----------------------------------------|
+| System (xubuntu)   | [[./xubuntu.org]]  | Install and upgrade xubuntu             |
+| Software           | [[./software.org]] | Install typical biostats Software       |
+| Linux Servers      | [[./servers.org]]  | File system on linux servers            |
+| Connections        | [[./connect.org]]  | eduroam, vpn, github, doob, borel, ..., |
+| Backup             | [[./backup.org]]   | Via unison                              |
+| Paths              | [[./paths.org]]    | how ubuntu finds your programs          |
+| Danmark Statistics | [[./dst.org]]      | Work with registry data                 |
+| Google drive       | [[./google.org]]   | Work with google drive                  |
 
