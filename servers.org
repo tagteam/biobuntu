@@ -92,7 +92,7 @@ Here is an example =.prf= file:
    
 #+BEGIN_example
 root = /home/user-name-on-bring-your-own-device/
-root = ssh://bio737@doob//home/ifsv/bio737/
+root = ssh://bio737@doob//home/bio737/projects/biostat01/people/bio737
 
 # allow that new directories are created  
 watch = false
