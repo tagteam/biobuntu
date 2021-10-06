@@ -1,7 +1,6 @@
 #+TITLE: biobuntu server file system
 #+Author: Thomas Alexander Gerds
 #+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
-#+superman-export-target: html
 
 In all of the following =*Terminal*= codes you should replace =bio737=
 with your own *KU-id*. Shout out loud (we need to be able to hear you
