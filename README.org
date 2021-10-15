@@ -18,5 +18,4 @@ you find a typo, a crypticum or missing data.
 | Backup             | [[./backup.org]]   | Via unison                              |
 | Paths              | [[./paths.org]]    | how ubuntu finds your programs          |
 | Danmark Statistics | [[./dst.org]]      | Work with registry data                 |
-| Google drive       | [[./google.org]]   | Work with google drive                  |
 
