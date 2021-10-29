@@ -79,7 +79,7 @@ KU-id:
 #+BEGIN_EXAMPLE
 # Roots of the synchronization
 root = /home/ubuntu-user/
-root = ssh://bio737@doob//home/ifsv/bio737/
+root = ssh://bio737@doob//projects/biostat01/people/bio737/
 
 # files
 path=.Rprofile

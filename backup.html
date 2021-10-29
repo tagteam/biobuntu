@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-06 Thu 09:49 -->
+<!-- 2021-10-29 Fri 12:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>biobuntu backup</title>
@@ -227,25 +227,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3025cf1">Backup all or some files</a>
+<li><a href="#org1deddd9">Backup all or some files</a>
 <ul>
-<li><a href="#org17cf214">Philosophy</a></li>
-<li><a href="#orgcc72045">Install unison (on ubuntu)</a></li>
-<li><a href="#orga786682">Setup a unison profile</a></li>
-<li><a href="#org8bf4722">Run unison</a></li>
+<li><a href="#orgbd2623d">Philosophy</a></li>
+<li><a href="#org169eac0">Install unison (on ubuntu)</a></li>
+<li><a href="#org451ab81">Setup a unison profile</a></li>
+<li><a href="#orge902cb7">Run unison</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3025cf1" class="outline-2">
-<h2 id="org3025cf1">Backup all or some files</h2>
-<div class="outline-text-2" id="text-org3025cf1">
+<div id="outline-container-org1deddd9" class="outline-2">
+<h2 id="org1deddd9">Backup all or some files</h2>
+<div class="outline-text-2" id="text-org1deddd9">
 </div>
-<div id="outline-container-org17cf214" class="outline-3">
-<h3 id="org17cf214">Philosophy</h3>
-<div class="outline-text-3" id="text-org17cf214">
+<div id="outline-container-orgbd2623d" class="outline-3">
+<h3 id="orgbd2623d">Philosophy</h3>
+<div class="outline-text-3" id="text-orgbd2623d">
 <p>
 It is important that you backup your work. It may not be necessary to
 backup all files in your home directory as this would include
@@ -265,9 +265,9 @@ precious work with an older version.
 </div>
 </div>
 
-<div id="outline-container-orgcc72045" class="outline-3">
-<h3 id="orgcc72045">Install unison (on ubuntu)</h3>
-<div class="outline-text-3" id="text-orgcc72045">
+<div id="outline-container-org169eac0" class="outline-3">
+<h3 id="org169eac0">Install unison (on ubuntu)</h3>
+<div class="outline-text-3" id="text-org169eac0">
 <p>
 It may be possible to install unison using system facilities but since
 unison works best (read: works only if) when it has been build with
@@ -296,10 +296,10 @@ to the file <code>~/.bashrc</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">set PATH so it includes user's private bin if it exists</span>
- <span style="font-weight: bold;">if</span> [ -d ~/bin ]; <span style="font-weight: bold;">then</span>
-   <span style="font-weight: bold; font-style: italic;">PATH</span>=~/bin:<span style="font-style: italic;">"${PATH}"</span>
- <span style="font-weight: bold;">fi</span>
+<pre class="src src-sh"><span style="color: #b22222;"># </span><span style="color: #b22222;">set PATH so it includes user's private bin if it exists</span>
+ <span style="color: #a020f0;">if</span> [ -d ~/bin ]; <span style="color: #a020f0;">then</span>
+   <span style="color: #a0522d;">PATH</span>=~/bin:<span style="color: #8b2252;">"${PATH}"</span>
+ <span style="color: #a020f0;">fi</span>
 </pre>
 </div>
 <p>
@@ -319,9 +319,9 @@ unison binaries also on doob.</li>
 </div>
 </div>
 
-<div id="outline-container-orga786682" class="outline-3">
-<h3 id="orga786682">Setup a unison profile</h3>
-<div class="outline-text-3" id="text-orga786682">
+<div id="outline-container-org451ab81" class="outline-3">
+<h3 id="org451ab81">Setup a unison profile</h3>
+<div class="outline-text-3" id="text-org451ab81">
 <p>
 The profiles are saved in the folder <code>~/.unison/</code> with extension
 <code>.prf</code>.  The profiles are server specific but you can have an almost
@@ -339,10 +339,10 @@ Example: contents of file <code>~/.unison/doob.prf</code>. Change <code>ubuntu-u
 KU-id:
 </p>
 
-<pre class="example" id="org9a3a27c">
+<pre class="example" id="org6a53ed4">
 # Roots of the synchronization
 root = /home/ubuntu-user/
-root = ssh://bio737@doob//home/ifsv/bio737/
+root = ssh://bio737@doob//projects/biostat01/people/bio737/
 
 # files
 path=.Rprofile
@@ -364,9 +364,9 @@ ignore = Name *~
 </div>
 </div>
 
-<div id="outline-container-org8bf4722" class="outline-3">
-<h3 id="org8bf4722">Run unison</h3>
-<div class="outline-text-3" id="text-org8bf4722">
+<div id="outline-container-orge902cb7" class="outline-3">
+<h3 id="orge902cb7">Run unison</h3>
+<div class="outline-text-3" id="text-orge902cb7">
 <div class="org-src-container">
 <pre class="src src-sh">unison-gtk -addversionno doob.prf
 </pre>
@@ -380,7 +380,7 @@ Then check if all directions are plausible, resolve <code>?</code> (if any), and
 </div>
 </div>
 <div id="postamble" class="status">
-Last update: 06 May 2021 by Thomas Alexander Gerds.
+Last update: 29 Oct 2021 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>
