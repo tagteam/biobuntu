@@ -54,9 +54,11 @@ binaries.
    i.e., =scp=. The machine called =doob= is a virtual linux server
    which runs redhat (not ubuntu). Make sure that also here the shell commands
    =which unison= and =which unison-gtk2= show the freshly unpacked
-   unison binaries also on doob.
+   unison binaries also on doob. This can be done via the command (in your home directory):
 
-
+#+BEGIN_SRC sh
+scp -r bin bio737@doob.unicph.domain:/home/bio737/bin
+#+END_SRC
 
 # #+BEGIN_SRC sh
 # sudo apt-get install --assume-yes liblablgtk-extras-ocaml-dev

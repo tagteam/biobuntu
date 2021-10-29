@@ -30,6 +30,20 @@ Then, you can login to =doob= via:
 ssh -X bio737@doob
 #+END_SRC
 
+You may have to specify the unicph.domain, i.e.
+
+#+BEGIN_SRC sh
+ssh bio737@doob.unicph.domain
+#+END_SRC
+
+** Loading R
+
+Note that R is not already loaded when you log in. This can be done with (it's important that gcc is loaded first):
+#+BEGIN_SRC sh
+module load gcc/11.2.0
+module load R/4.1.1
+#+END_SRC
+
 *** Hard to remember?
 
 Add aliases to the file =~/.bashrc=

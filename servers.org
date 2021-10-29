@@ -1,7 +1,6 @@
 #+TITLE: biobuntu server file system
 #+Author: Thomas Alexander Gerds
 #+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
-#+superman-export-target: html
 
 In all of the following =*Terminal*= codes you should replace =bio737=
 with your own *KU-id*. Shout out loud (we need to be able to hear you
@@ -92,7 +91,7 @@ Here is an example =.prf= file:
    
 #+BEGIN_example
 root = /home/user-name-on-bring-your-own-device/
-root = ssh://bio737@doob//home/ifsv/bio737/
+root = ssh://bio737@doob//projects/biostat01/people/bio737
 
 # allow that new directories are created  
 watch = false
