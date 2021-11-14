@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-14 Sun 11:12 -->
+<!-- 2021-11-14 Sun 11:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>connect with computing servers via vpn</title>
@@ -227,22 +227,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5af8e9c">Preparation</a></li>
-<li><a href="#orgf4e3e4b">Open vpn from a wireless connection</a></li>
-<li><a href="#org218442b">Biostat computing servers</a>
+<li><a href="#org88eb507">Preparation</a></li>
+<li><a href="#org20c3a5c">Open vpn from a wireless connection</a></li>
+<li><a href="#orge0ca472">Biostat computing servers</a>
 <ul>
-<li><a href="#org585487d">Loading R</a></li>
-<li><a href="#org39a0a21">Hard to remember?</a></li>
+<li><a href="#org647de78">Loading R</a></li>
+<li><a href="#org51ec256">Hard to remember?</a></li>
 </ul>
 </li>
-<li><a href="#orga793188">Eduroam</a></li>
+<li><a href="#org818ac7b">Eduroam</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5af8e9c" class="outline-2">
-<h2 id="org5af8e9c">Preparation</h2>
-<div class="outline-text-2" id="text-org5af8e9c">
+<div id="outline-container-org88eb507" class="outline-2">
+<h2 id="org88eb507">Preparation</h2>
+<div class="outline-text-2" id="text-org88eb507">
 <p>
 In all of the following <code>*Terminal*</code> codes you should replace <code>bio737</code>
 with your own <b>KU-id</b>. Shout out loud (we need to be able to hear you
@@ -253,9 +253,9 @@ problems &#x2026;
 </div>
 
 
-<div id="outline-container-orgf4e3e4b" class="outline-2">
-<h2 id="orgf4e3e4b">Open vpn from a wireless connection</h2>
-<div class="outline-text-2" id="text-orgf4e3e4b">
+<div id="outline-container-org20c3a5c" class="outline-2">
+<h2 id="org20c3a5c">Open vpn from a wireless connection</h2>
+<div class="outline-text-2" id="text-org20c3a5c">
 <p>
 Here we describe a way to connect a linux bring-your-own-device
 computer via vpn to the KU system.
@@ -306,9 +306,9 @@ authenticator app on your or phone/tablet.
 </div>
 </div>
 
-<div id="outline-container-org218442b" class="outline-2">
-<h2 id="org218442b">Biostat computing servers</h2>
-<div class="outline-text-2" id="text-org218442b">
+<div id="outline-container-orge0ca472" class="outline-2">
+<h2 id="orge0ca472">Biostat computing servers</h2>
+<div class="outline-text-2" id="text-orge0ca472">
 <p>
 The computing servers with ssh access are 
 </p>
@@ -341,9 +341,9 @@ You may have to specify the unicph.domain, i.e.
 </div>
 </div>
 
-<div id="outline-container-org585487d" class="outline-3">
-<h3 id="org585487d">Loading R</h3>
-<div class="outline-text-3" id="text-org585487d">
+<div id="outline-container-org647de78" class="outline-3">
+<h3 id="org647de78">Loading R</h3>
+<div class="outline-text-3" id="text-org647de78">
 <p>
 Note that R is not already loaded when you log in. This can be done with (it's important that gcc is loaded first):
 </p>
@@ -355,9 +355,9 @@ module load R/4.1.1
 </div>
 </div>
 
-<div id="outline-container-org39a0a21" class="outline-3">
-<h3 id="org39a0a21">Hard to remember?</h3>
-<div class="outline-text-3" id="text-org39a0a21">
+<div id="outline-container-org51ec256" class="outline-3">
+<h3 id="org51ec256">Hard to remember?</h3>
+<div class="outline-text-3" id="text-org51ec256">
 <p>
 Add aliases to the file <code>~/.bashrc</code>
 </p>
@@ -373,9 +373,9 @@ Add aliases to the file <code>~/.bashrc</code>
 </div>
 </div>
 
-<div id="outline-container-orga793188" class="outline-2">
-<h2 id="orga793188">Eduroam</h2>
-<div class="outline-text-2" id="text-orga793188">
+<div id="outline-container-org818ac7b" class="outline-2">
+<h2 id="org818ac7b">Eduroam</h2>
+<div class="outline-text-2" id="text-org818ac7b">
 <p>
 You are on your own, but this should work:
 </p>
@@ -384,15 +384,15 @@ You are on your own, but this should work:
 Wi-fi Security
 </p>
 
-<p>
-Security: WPA &amp; WPA2 Enterprise
-Authentication: Protected EAP (PEAP)
-No CA certificate is required
-PEAP version: Version 0
-Inner authentication: MSCHAPv2
-Username: bio737
-Password: xxxx
-</p>
+<ul class="org-ul">
+<li>Security: WPA &amp; WPA2 Enterprise</li>
+<li>Authentication: Protected EAP (PEAP)</li>
+<li>No CA certificate is required</li>
+<li>PEAP version: Version 0</li>
+<li>Inner authentication: MSCHAPv2</li>
+<li>Username: bio737</li>
+<li>Password: xxxx</li>
+</ul>
 </div>
 </div>
 </div>

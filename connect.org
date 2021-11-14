@@ -95,13 +95,13 @@ You are on your own, but this should work:
 
 Wi-fi Security
 
-Security: WPA & WPA2 Enterprise
-Authentication: Protected EAP (PEAP)
-No CA certificate is required
-PEAP version: Version 0
-Inner authentication: MSCHAPv2
-Username: bio737
-Password: xxxx
+- Security: WPA & WPA2 Enterprise
+- Authentication: Protected EAP (PEAP)
+- No CA certificate is required
+- PEAP version: Version 0
+- Inner authentication: MSCHAPv2
+- Username: bio737
+- Password: xxxx
 
 
 
