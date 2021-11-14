@@ -1,4 +1,4 @@
-#+TITLE: biobuntu connections
+#+TITLE: connect with computing servers via vpn 
 #+Author: Thomas Alexander Gerds
 #+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
 #+superman-export-target: html
@@ -10,17 +10,51 @@ with your own *KU-id*. Shout out loud (we need to be able to hear you
 in bygning 15) if you run into unclearness, typos or really unsolvable
 problems ...
 
-** Biostat computing servers 
+
+* Open vpn from a wireless connection 
+
+Here we describe a way to connect a linux bring-your-own-device
+computer via vpn to the KU system.
+
+1. Open https://vpn.ku.dk and log in with 2-factor authentication
+   (E.g., use the microsoft authenticator app on your phone or
+   tablet. see KU net for details). They say that this will start the
+   installation of the Cisco client, however, see the next steps.
+
+2. Download the file anyconnect-linux64-....webdeploy-k9.sh 
+
+3. change the executable permissions of the file and
+   execute the file as sudo, e.g.,
+
+#+BEGIN_SRC sh
+cd Downloads
+chmod 751 anyconnect-linux64-....webdeploy-k9.sh
+sudo ./anyconnect-linux64-....webdeploy-k9.sh
+#+END_SRC   
+
+4. now connect to the vpn either using the command line
+
+#+BEGIN_SRC sh
+/opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
+#+END_SRC   
+
+or the graphical interface
+
+#+BEGIN_SRC sh
+/opt/cisco/anyconnect/bin/vpnui
+#+END_SRC   
+
+In both options you provide your KU-user-name and password. Note that
+this requires 2-factor authorization, i.e., also check you
+authenticator app on your or phone/tablet.
+
+* Biostat computing servers 
 The computing servers with ssh access are 
 
 - =doob= (virtual)
 - =rasch= (virtual)
 - =rao= (linux, cue system)
 - =cox= (linux, cue system)  
-# - =gauss= (48 cores, anarchy)
-# - =borel= (48 cores, anarchy)
-# - =bayes= (64 cores, cue system)
-# - =fisher= (64 cores, cue system)
 
 To connect with one of these machines you need to either be connected
 via cable at CSS or open a vpn connection (see instructions below).
@@ -44,7 +78,7 @@ module load gcc/11.2.0
 module load R/4.1.1
 #+END_SRC
 
-*** Hard to remember?
+** Hard to remember?
 
 Add aliases to the file =~/.bashrc=
 
@@ -56,8 +90,6 @@ alias rasch='ssh -X bio737@rasch'
 #+END_SRC
 
 * Eduroam
-
-** networkmanager
 
 You are on your own, but this should work:
 
@@ -71,31 +103,7 @@ Inner authentication: MSCHAPv2
 Username: bio737
 Password: xxxx
 
-* Open vpn from a wireless connection 
 
-Install cisco anyconnect and consider instructions inside
-KU intranet:
-
-- vpn.sund.ku.dk
-- library.sund.ku.dk 
-
-To open the vpn connection you need apply two-factor authentication.
-You can use a Yubikey or install NetIQ Advanced Authentication on your
-phone/tablet.
-
-** Graphical user interface
-
-#+BEGIN_SRC sh
-/opt/cisco/anyconnect/bin/vpnui
-#+END_SRC   
-  
-** Command line
-   
-#+BEGIN_SRC sh
-/opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
-# lazy?
-printf 'bio737\nXXXXX\ny' |   /opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
-#+END_SRC
 
 
 

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-10-05 Tue 06:56 -->
+<!-- 2021-11-14 Sun 11:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>biobuntu connections</title>
+<title>connect with computing servers via vpn</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Thomas Alexander Gerds Thomas A. Gerds" />
 <style type="text/css">
@@ -222,45 +222,93 @@
 <br>Thomas Alexander Gerds Thomas A. Gerds
 </div>
 <div id="content">
-<h1 class="title">biobuntu connections</h1>
+<h1 class="title">connect with computing servers via vpn</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org30d89f3">Preparation</a>
+<li><a href="#org5af8e9c">Preparation</a></li>
+<li><a href="#orgf4e3e4b">Open vpn from a wireless connection</a></li>
+<li><a href="#org218442b">Biostat computing servers</a>
 <ul>
-<li><a href="#org1aaa816">Biostat computing servers</a></li>
-<li><a href="#orgdd993ef">Hard to remember?</a></li>
+<li><a href="#org585487d">Loading R</a></li>
+<li><a href="#org39a0a21">Hard to remember?</a></li>
 </ul>
 </li>
-<li><a href="#org4ef3452">Eduroam</a>
-<ul>
-<li><a href="#orgab7dc58">networkmanager</a></li>
-</ul>
-</li>
-<li><a href="#org6f65fb5">Open vpn from a wireless connection</a>
-<ul>
-<li><a href="#org2324d3f">Graphical user interface</a></li>
-<li><a href="#org77619ad">Command line</a></li>
-</ul>
-</li>
+<li><a href="#orga793188">Eduroam</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org30d89f3" class="outline-2">
-<h2 id="org30d89f3">Preparation</h2>
-<div class="outline-text-2" id="text-org30d89f3">
+<div id="outline-container-org5af8e9c" class="outline-2">
+<h2 id="org5af8e9c">Preparation</h2>
+<div class="outline-text-2" id="text-org5af8e9c">
 <p>
 In all of the following <code>*Terminal*</code> codes you should replace <code>bio737</code>
-with your own <b>KU-id</b>. Shout out loud if you run into unclear
-statements, typos or real problems &#x2026;
+with your own <b>KU-id</b>. Shout out loud (we need to be able to hear you
+in bygning 15) if you run into unclearness, typos or really unsolvable
+problems &#x2026;
 </p>
 </div>
+</div>
 
-<div id="outline-container-org1aaa816" class="outline-3">
-<h3 id="org1aaa816">Biostat computing servers</h3>
-<div class="outline-text-3" id="text-org1aaa816">
+
+<div id="outline-container-orgf4e3e4b" class="outline-2">
+<h2 id="orgf4e3e4b">Open vpn from a wireless connection</h2>
+<div class="outline-text-2" id="text-orgf4e3e4b">
+<p>
+Here we describe a way to connect a linux bring-your-own-device
+computer via vpn to the KU system.
+</p>
+
+<ol class="org-ol">
+<li>Open <a href="https://vpn.ku.dk">https://vpn.ku.dk</a> and log in with 2-factor authentication
+(E.g., use the microsoft authenticator app on your phone or
+tablet. see KU net for details). They say that this will start the
+installation of the Cisco client, however, see the next steps.</li>
+
+<li>Download the file anyconnect-linux64-&#x2026;.webdeploy-k9.sh</li>
+
+<li>change the executable permissions of the file and
+execute the file as sudo, e.g.,</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #483d8b;">cd</span> Downloads
+chmod 751 anyconnect-linux64-....webdeploy-k9.sh
+sudo ./anyconnect-linux64-....webdeploy-k9.sh
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>now connect to the vpn either using the command line</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-sh">/opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"KU VPN"</span>
+</pre>
+</div>
+
+<p>
+or the graphical interface
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">/opt/cisco/anyconnect/bin/vpnui
+</pre>
+</div>
+
+<p>
+In both options you provide your KU-user-name and password. Note that
+this requires 2-factor authorization, i.e., also check you
+authenticator app on your or phone/tablet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org218442b" class="outline-2">
+<h2 id="org218442b">Biostat computing servers</h2>
+<div class="outline-text-2" id="text-org218442b">
 <p>
 The computing servers with ssh access are 
 </p>
@@ -282,35 +330,52 @@ Then, you can login to <code>doob</code> via:
 <pre class="src src-sh">ssh -X bio737@doob
 </pre>
 </div>
+
+<p>
+You may have to specify the unicph.domain, i.e.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ssh bio737@doob.unicph.domain
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgdd993ef" class="outline-3">
-<h3 id="orgdd993ef">Hard to remember?</h3>
-<div class="outline-text-3" id="text-orgdd993ef">
+<div id="outline-container-org585487d" class="outline-3">
+<h3 id="org585487d">Loading R</h3>
+<div class="outline-text-3" id="text-org585487d">
+<p>
+Note that R is not already loaded when you log in. This can be done with (it's important that gcc is loaded first):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">module load gcc/11.2.0
+module load R/4.1.1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39a0a21" class="outline-3">
+<h3 id="org39a0a21">Hard to remember?</h3>
+<div class="outline-text-3" id="text-org39a0a21">
 <p>
 Add aliases to the file <code>~/.bashrc</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">gauss</span>=<span style="color: #8b2252;">'ssh -X bio737@gauss'</span>
-<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">borel</span>=<span style="color: #8b2252;">'ssh -X bio737@borel'</span>
-<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">fisher</span>=<span style="color: #8b2252;">'ssh -X bio737@fisher'</span>
-<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">bayes</span>=<span style="color: #8b2252;">'ssh -X bio737@bayes'</span>
+<pre class="src src-sh"><span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">cox</span>=<span style="color: #8b2252;">'ssh -X bio737@cox'</span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">rao</span>=<span style="color: #8b2252;">'ssh -X bio737@rao'</span>
 <span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">doob</span>=<span style="color: #8b2252;">'ssh -X bio737@doob'</span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">rasch</span>=<span style="color: #8b2252;">'ssh -X bio737@rasch'</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4ef3452" class="outline-2">
-<h2 id="org4ef3452">Eduroam</h2>
-<div class="outline-text-2" id="text-org4ef3452">
-</div>
-<div id="outline-container-orgab7dc58" class="outline-3">
-<h3 id="orgab7dc58">networkmanager</h3>
-<div class="outline-text-3" id="text-orgab7dc58">
+<div id="outline-container-orga793188" class="outline-2">
+<h2 id="orga793188">Eduroam</h2>
+<div class="outline-text-2" id="text-orga793188">
 <p>
 You are on your own, but this should work:
 </p>
@@ -331,52 +396,8 @@ Password: xxxx
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6f65fb5" class="outline-2">
-<h2 id="org6f65fb5">Open vpn from a wireless connection</h2>
-<div class="outline-text-2" id="text-org6f65fb5">
-<p>
-Install cisco anyconnect and consider instructions inside
-KU intranet:
-</p>
-
-<ul class="org-ul">
-<li>vpn.sund.ku.dk</li>
-<li>library.sund.ku.dk</li>
-</ul>
-
-<p>
-To open the vpn connection you need apply two-factor authentication.
-You can use a Yubikey or install NetIQ Advanced Authentication on your
-phone/tablet.
-</p>
-</div>
-
-<div id="outline-container-org2324d3f" class="outline-3">
-<h3 id="org2324d3f">Graphical user interface</h3>
-<div class="outline-text-3" id="text-org2324d3f">
-<div class="org-src-container">
-<pre class="src src-sh">/opt/cisco/anyconnect/bin/vpnui
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org77619ad" class="outline-3">
-<h3 id="org77619ad">Command line</h3>
-<div class="outline-text-3" id="text-org77619ad">
-<div class="org-src-container">
-<pre class="src src-sh">/opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"KU VPN"</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">lazy?</span>
-<span style="color: #483d8b;">printf</span> <span style="color: #8b2252;">'bio737\nXXXXX\ny'</span> |   /opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"KU VPN"</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div id="postamble" class="status">
-Last update: 05 Oct 2021 by Thomas Alexander Gerds.
+Last update: 14 Nov 2021 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>
