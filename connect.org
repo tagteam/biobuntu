@@ -35,7 +35,9 @@ sudo ./anyconnect-linux64-....webdeploy-k9.sh
 4. now connect to the vpn either using the command line
 
 #+BEGIN_SRC sh
-/opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
+  /opt/cisco/anyconnect/bin/vpn -s connect "vpn.ku.dk"
+# or after the first time you can also use the alias
+  /opt/cisco/anyconnect/bin/vpn -s connect "KU VPN"
 #+END_SRC   
 
 or the graphical interface

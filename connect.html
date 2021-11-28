@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-14 Sun 11:26 -->
+<!-- 2021-11-28 Sun 12:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>connect with computing servers via vpn</title>
@@ -227,22 +227,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org88eb507">Preparation</a></li>
-<li><a href="#org20c3a5c">Open vpn from a wireless connection</a></li>
-<li><a href="#orge0ca472">Biostat computing servers</a>
+<li><a href="#orgecb97cf">Preparation</a></li>
+<li><a href="#org2a7a479">Open vpn from a wireless connection</a></li>
+<li><a href="#orgf40b5c7">Biostat computing servers</a>
 <ul>
-<li><a href="#org647de78">Loading R</a></li>
-<li><a href="#org51ec256">Hard to remember?</a></li>
+<li><a href="#org57c529d">Loading R</a></li>
+<li><a href="#org34435f7">Hard to remember?</a></li>
 </ul>
 </li>
-<li><a href="#org818ac7b">Eduroam</a></li>
+<li><a href="#org0177ccd">Eduroam</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org88eb507" class="outline-2">
-<h2 id="org88eb507">Preparation</h2>
-<div class="outline-text-2" id="text-org88eb507">
+<div id="outline-container-orgecb97cf" class="outline-2">
+<h2 id="orgecb97cf">Preparation</h2>
+<div class="outline-text-2" id="text-orgecb97cf">
 <p>
 In all of the following <code>*Terminal*</code> codes you should replace <code>bio737</code>
 with your own <b>KU-id</b>. Shout out loud (we need to be able to hear you
@@ -253,9 +253,9 @@ problems &#x2026;
 </div>
 
 
-<div id="outline-container-org20c3a5c" class="outline-2">
-<h2 id="org20c3a5c">Open vpn from a wireless connection</h2>
-<div class="outline-text-2" id="text-org20c3a5c">
+<div id="outline-container-org2a7a479" class="outline-2">
+<h2 id="org2a7a479">Open vpn from a wireless connection</h2>
+<div class="outline-text-2" id="text-org2a7a479">
 <p>
 Here we describe a way to connect a linux bring-your-own-device
 computer via vpn to the KU system.
@@ -285,7 +285,9 @@ sudo ./anyconnect-linux64-....webdeploy-k9.sh
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-sh">/opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"KU VPN"</span>
+<pre class="src src-sh">  /opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"vpn.ku.dk"</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">or after the first time you can also use the alias</span>
+  /opt/cisco/anyconnect/bin/vpn -s connect <span style="color: #8b2252;">"KU VPN"</span>
 </pre>
 </div>
 
@@ -306,9 +308,9 @@ authenticator app on your or phone/tablet.
 </div>
 </div>
 
-<div id="outline-container-orge0ca472" class="outline-2">
-<h2 id="orge0ca472">Biostat computing servers</h2>
-<div class="outline-text-2" id="text-orge0ca472">
+<div id="outline-container-orgf40b5c7" class="outline-2">
+<h2 id="orgf40b5c7">Biostat computing servers</h2>
+<div class="outline-text-2" id="text-orgf40b5c7">
 <p>
 The computing servers with ssh access are 
 </p>
@@ -341,9 +343,9 @@ You may have to specify the unicph.domain, i.e.
 </div>
 </div>
 
-<div id="outline-container-org647de78" class="outline-3">
-<h3 id="org647de78">Loading R</h3>
-<div class="outline-text-3" id="text-org647de78">
+<div id="outline-container-org57c529d" class="outline-3">
+<h3 id="org57c529d">Loading R</h3>
+<div class="outline-text-3" id="text-org57c529d">
 <p>
 Note that R is not already loaded when you log in. This can be done with (it's important that gcc is loaded first):
 </p>
@@ -355,9 +357,9 @@ module load R/4.1.1
 </div>
 </div>
 
-<div id="outline-container-org51ec256" class="outline-3">
-<h3 id="org51ec256">Hard to remember?</h3>
-<div class="outline-text-3" id="text-org51ec256">
+<div id="outline-container-org34435f7" class="outline-3">
+<h3 id="org34435f7">Hard to remember?</h3>
+<div class="outline-text-3" id="text-org34435f7">
 <p>
 Add aliases to the file <code>~/.bashrc</code>
 </p>
@@ -373,9 +375,9 @@ Add aliases to the file <code>~/.bashrc</code>
 </div>
 </div>
 
-<div id="outline-container-org818ac7b" class="outline-2">
-<h2 id="org818ac7b">Eduroam</h2>
-<div class="outline-text-2" id="text-org818ac7b">
+<div id="outline-container-org0177ccd" class="outline-2">
+<h2 id="org0177ccd">Eduroam</h2>
+<div class="outline-text-2" id="text-org0177ccd">
 <p>
 You are on your own, but this should work:
 </p>
@@ -397,7 +399,7 @@ Wi-fi Security
 </div>
 </div>
 <div id="postamble" class="status">
-Last update: 14 Nov 2021 by Thomas Alexander Gerds.
+Last update: 28 Nov 2021 by Thomas Alexander Gerds.
 </div>
 </body>
 </html>

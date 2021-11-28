@@ -15,12 +15,6 @@ Launch it like this:
 sudo synaptic
 #+END_SRC
 
-* Wireless
-
-#+BEGIN_SRC sh
-sudo apt-get install --assume-yes wicd wicd-gtk
-#+END_SRC
-
 * LaTeX and close friends
 
 #+BEGIN_SRC sh
