@@ -1,0 +1,86 @@
+#+TITLE: KU Print Installation
+#+Author: Zehao Su
+
+* Before starting
+
+Think about whether you actually need the printers installed. If you 
+don't care much about the print setup (long/short edge binding, 
+margin, pages per side, etc.), then you can always use webprint on 
+[[https://webprint.ku.dk]].
+
+* Check installation of CUPS
+
+CUPS is an acronym for Common UNIX Printing System which allows you 
+to use your computer as a printer server. You can check if CUPS is 
+installed on your machine by running
+
+#+BEGIN_SRC sh
+lpstat -r
+#+END_SRC
+
+This command checks whether a scheduler is running.
+
+If you don't have CUPS, you need to install it with
+
+#+BEGIN_SRC sh
+sudo apt-get install cups -y
+#+END_SRC
+
+You need to run
+
+#+BEGIN_SRC sh
+sudo systemctl start cups
+sudo systemctl enable cups
+#+END_SRC
+
+to start and enable CUPS services after successful installation.
+
+* Add KU printer
+
+N.B. You need to be within KU network to do this!
+
+KU Print uses ipps for printer URI. To install a printer called 
+=KU_MobilitytPrint=, run
+
+#+BEGIN_SRC sh
+lpadmin -p KU_MobilityPrint -E -v ipps://mobilityprint.ku.dk:9164/printers/ku_mobilityprint -m everywhere
+#+END_SRC
+
+The =E= option enables the printer and accepts new print jobs. 
+The =v= option specifies the printer URL. 
+Finally, the =m= option sets up the printer driver. For KU printers, 
+the generic =everywhere= driver should work.
+ 
+* Set authentication method
+
+Now you have the option to try printing any document from your 
+computer. If the system prompts you to enter username and password, 
+use your KU-id for login.
+
+In case this doesn't work, you have to change the configuration of 
+this printer manually.
+
+First, you have to stop the CUPS service by running
+
+#+BEGIN_SRC sh
+sudo service cups stop
+#+END_SRC
+
+Then use any editor of your choice (e.g. gedit) to open the file
+
+#+BEGIN_SRC sh
+sudo gedit /etc/cups/printers.conf
+#+END_SRC
+
+You should find a chunk of text starting with 
+=<Printer KU_MobilityPrint>=. Add under it on a new line: 
+=AuthInfoRequired username,password=. Save and quit.
+
+Restart CUPS
+
+#+BEGIN_SRC sh
+sudo service cups restart
+#+END_SRC
+
+Try printing any document again. You should be able to enter your 
+login info on a pop-up window.
