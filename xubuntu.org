@@ -37,7 +37,7 @@ sudo apt-get install install usb-creator-gtk --assume-yes
 - use =usb-creator-gtk=
 
 #+BEGIN_SRC sh
-usb-creator-gtk&
+sudo usb-creator-gtk&
 #+END_SRC   
 
 Here you choose the ubuntu version =iso= file from step one above and
