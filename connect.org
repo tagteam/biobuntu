@@ -86,10 +86,16 @@ Add aliases to the file =~/.bashrc=
 
 #+BEGIN_SRC sh
 alias cox='ssh -X bio737@cox'
-alias rao='ssh -X bio737@rao'
+alias rao='ssh -X bio737@rao' 
 alias doob='ssh -X bio737@doob'
 alias rasch='ssh -X bio737@rasch'
 #+END_SRC
+
+** Working on remote servers
+
+Check out Andreas's repository [[https://github.com/aejensen/computing-biostat-ucph][computing@biostat-ucph]] for more on the 
+servers. It is important to read the document =compBiostat.pdf= before
+you start working there.
 
 * Eduroam
 
