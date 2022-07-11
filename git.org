@@ -1,0 +1,56 @@
+#+TITLE: biobuntu git and github
+#+Author: Thomas Alexander Gerds
+#+setupfile:~/emacs-genome/snps/org-templates/setup-biobuntu.org
+
+In order to connect and interfere smoothly with sites such as =github=
+you need to set certain things up. These are described here.
+
+* github
+
+** Step 1
+
+On your own machine generate ssh keys in the following way.
+
+#+BEGIN_SRC sh
+ssh-keygen -t rsa -C "your@email.adress"
+# press RETURN 3 times
+#+END_SRC
+
+This produces the following file:
+
+#+BEGIN_SRC sh
+~/.ssh/id_rsa.pub
+#+END_SRC
+
+You should copy the contents of the file and upload it to github: go
+to your github account in an Internetbrowser, select settings in the dropdown
+menu connected to your picture in the right upper corner. Then select
+SSH and GPG keys from the left menu. You press the button =New SSH
+key= and paste the contents of the file =~/.ssh/id_rsa.pub=. The title
+does not matter but should relate to your current computer. Note, that
+you need to do Step 1 on every computer that you want to connect to
+github in this way.
+
+** Step 2
+
+Go back to settings on github in your Internetbrowser and scroll down
+to select Developer settings from the left hand menu. Use the button
+=Generate new token= (without experiation date) and copy the resulting token. 
+On your computer create/open the file
+
+#+BEGIN_SRC sh
+~/.netrc
+#+END_SRC
+
+Edit the file until it looks like this but with your github name
+instead YOURGITHUBNAME and the token that you just created on github
+instead of TOKEN.
+
+#+BEGIN_EXAMPLE
+machine github.com
+login YOURGITHUBNAME
+password TOKEN
+#+END_EXAMPLE
+
+
+
