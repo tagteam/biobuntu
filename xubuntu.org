@@ -12,7 +12,7 @@ To install a fresh ubuntu system on your computer:
 
 e.g., here: http://xubuntu.org/getxubuntu/
 
-- save the .torrent file in a place like Downloads and then use a program such as transition to download 
+- save the .torrent file in a place like Downloads and then use a program such as transmission to download 
 
 ** Format the usb-key
 
